@@ -18,8 +18,25 @@ int	create_socket(t_ping *p)
 	return (0);
 }
 
+static int	set_recv_timeout(t_ping *p)
+{
+	struct timeval	tv;
+
+	tv.tv_sec = (int)p->opts.interval;
+	tv.tv_usec = 0;
+	if (setsockopt(p->sockfd, SOL_SOCKET, SO_RCVTIMEO,
+			&tv, sizeof(tv)) < 0)
+	{
+		perror("ping: setsockopt RCVTIMEO");
+		return (1);
+	}
+	return (0);
+}
+
 int	set_socket_options(t_ping *p)
 {
+	if (set_recv_timeout(p) != 0)
+		return (1);
 	if (p->opts.ttl > 0)
 	{
 		if (setsockopt(p->sockfd, IPPROTO_IP, IP_TTL,

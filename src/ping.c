@@ -2,36 +2,22 @@
 #include <stdio.h>
 #include <unistd.h>
 
-static void	print_reply(t_ping *p, t_recv_result *res)
-{
-	int	bytes;
-
-	bytes = p->opts.size + ICMP_HDR_SIZE;
-	if (res->rtt >= 0)
-		printf("%d bytes from %s: icmp_seq=%d ttl=%d time=%.3f ms\n",
-			bytes, p->ip_str, res->seq, res->ttl, res->rtt);
-	else
-		printf("%d bytes from %s: icmp_seq=%d ttl=%d\n",
-			bytes, p->ip_str, res->seq, res->ttl);
-}
-
-static void	print_header(t_ping *p)
-{
-	printf("PING %s (%s): %d data bytes\n",
-		p->host, p->ip_str, p->opts.size);
-}
-
 static int	ping_once(t_ping *p, int seq)
 {
 	t_recv_result	res;
+	int				ret;
 
 	if (send_ping(p, seq) != 0)
 		return (1);
 	p->stats.sent++;
-	if (recv_ping(p, &res) != 0)
-		return (1);
-	update_stats(&p->stats, res.rtt);
-	print_reply(p, &res);
+	ret = recv_ping(p, &res);
+	if (ret == 0)
+	{
+		update_stats(&p->stats, res.rtt);
+		print_reply(p, &res);
+	}
+	else if (ret == 2)
+		print_error(p, &res);
 	return (0);
 }
 

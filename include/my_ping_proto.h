@@ -36,9 +36,15 @@ int		recv_ping(t_ping *p, t_recv_result *res);
 
 int		ping_loop(t_ping *p);
 
+void	print_error(t_ping *p, t_recv_result *res);
+void	print_reply(t_ping *p, t_recv_result *res);
+void	print_header(t_ping *p);
+
 void	init_stats(t_stats *s);
 void	update_stats(t_stats *s, double rtt);
 void	print_stats(t_ping *p);
 void	setup_signals(t_ping *p);
+
+void	print_verbose_error(t_recv_result *res);
 
 #endif

@@ -52,9 +52,14 @@ typedef struct s_long_opt_entry
 
 typedef struct s_recv_result
 {
-	int		seq;
-	int		ttl;
-	double	rtt;
+	int				seq;
+	int				ttl;
+	double			rtt;
+	int				type;
+	int				code;
+	int				bytes;
+	unsigned char	*orig_ip;
+	char			from_ip[INET_ADDRSTRLEN];
 }	t_recv_result;
 
 #endif
