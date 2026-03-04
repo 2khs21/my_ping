@@ -4,7 +4,9 @@
 
 static int	run(int argc, char **argv)
 {
-	t_ping	p;
+	t_ping			p;
+	t_icmp_packet	pkt;
+	int				pkt_size;
 
 	memset(&p, 0, sizeof(p));
 	p.sockfd = -1;
@@ -21,6 +23,8 @@ static int	run(int argc, char **argv)
 	}
 	debug_opts(&p);
 	printf("Resolved: %s -> %s\n", p.host, p.ip_str);
+	pkt_size = build_icmp_packet(&p, &pkt, 1);
+	debug_icmp_packet(&pkt, pkt_size);
 	// TODO: ping loop
 	close_socket(&p);
 	return (0);

@@ -24,10 +24,10 @@
 - [x] 소켓 생성 (SOCK_RAW, IPPROTO_ICMP)
 - [x] DNS 이름 해석 (getaddrinfo)
 - [x] TTL 설정 (setsockopt)
-- [ ] ICMP 패킷 구성
-  - [ ] ICMP 헤더 구조체
-  - [ ] 체크섬 계산
-  - [ ] 시퀀스 번호 관리
+- [x] ICMP 패킷 구성
+  - [x] ICMP 헤더 구조체
+  - [x] 체크섬 계산
+  - [x] 시퀀스 번호 관리
 - [ ] 패킷 송신 (sendto)
 - [ ] 패킷 수신 (recvmsg)
 - [ ] RTT 계산 (gettimeofday)

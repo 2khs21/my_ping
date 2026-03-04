@@ -2,8 +2,10 @@
 # define MY_PING_PROTO_H
 
 # include "my_ping_types.h"
+# include "my_ping_icmp.h"
 
 void	debug_opts(t_ping *p);
+void	debug_icmp_packet(t_icmp_packet *pkt, int total_size);
 
 int		parse_args(int argc, char **argv, t_ping *p);
 void	print_usage(void);
@@ -25,5 +27,9 @@ int		resolve_host(t_ping *p);
 int		create_socket(t_ping *p);
 int		set_socket_options(t_ping *p);
 void	close_socket(t_ping *p);
+
+uint16_t	checksum(void *data, int len);
+int			build_icmp_packet(t_ping *p, t_icmp_packet *pkt, int seq);
+double		calc_rtt(t_icmp_packet *pkt, int payload_size);
 
 #endif

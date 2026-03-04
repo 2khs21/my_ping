@@ -6,6 +6,7 @@
 
 # include "my_ping_consts.h"
 # include "my_ping_types.h"
+# include "my_ping_icmp.h"
 # include "my_ping_proto.h"
 
 #endif

@@ -29,3 +29,27 @@ void	debug_opts(t_ping *p)
 	print_pattern(p->opts.pattern, p->opts.pattern_len);
 	printf("=================\n");
 }
+
+void	debug_icmp_packet(t_icmp_packet *pkt, int total_size)
+{
+	int				i;
+	unsigned char	*raw;
+
+	printf("===== ICMP Packet Debug =====\n");
+	printf("Type:     %d\n", pkt->hdr.type);
+	printf("Code:     %d\n", pkt->hdr.code);
+	printf("Checksum: 0x%04x\n", pkt->hdr.checksum);
+	printf("ID:       %d\n", pkt->hdr.id);
+	printf("Seq:      %d\n", pkt->hdr.seq);
+	printf("Size:     %d bytes\n", total_size);
+	printf("Timestamp: %ld.%06ld\n",
+		pkt->timestamp.tv_sec, pkt->timestamp.tv_usec);
+	printf("Raw hex:  ");
+	raw = (unsigned char *)pkt;
+	i = 0;
+	while (i < total_size && i < 32)
+		printf("%02x ", raw[i++]);
+	if (total_size > 32)
+		printf("...");
+	printf("\n=============================\n");
+}
