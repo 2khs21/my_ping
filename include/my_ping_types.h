@@ -1,6 +1,8 @@
 #ifndef MY_PING_TYPES_H
 # define MY_PING_TYPES_H
 
+# include <netinet/in.h>
+
 typedef struct s_opts
 {
 	int				verbose;
@@ -16,8 +18,11 @@ typedef struct s_opts
 
 typedef struct s_ping
 {
-	char	*host;
-	t_opts	opts;
+	char				*host;
+	t_opts				opts;
+	int					sockfd;
+	struct sockaddr_in	addr;
+	char				ip_str[INET_ADDRSTRLEN];
 }	t_ping;
 
 typedef int	(*t_opt_fn)(int argc, char **argv, int *i, t_ping *p);

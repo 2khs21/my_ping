@@ -21,8 +21,9 @@
   - [x] 숫자 파싱 (오버플로우 체크)
   - [x] Hex 패턴 파싱
 - [x] 디버그 출력 기능
-- [ ] 소켓 생성 (SOCK_RAW, IPPROTO_ICMP)
-- [ ] DNS 이름 해석 (getaddrinfo)
+- [x] 소켓 생성 (SOCK_RAW, IPPROTO_ICMP)
+- [x] DNS 이름 해석 (getaddrinfo)
+- [x] TTL 설정 (setsockopt)
 - [ ] ICMP 패킷 구성
   - [ ] ICMP 헤더 구조체
   - [ ] 체크섬 계산
@@ -34,7 +35,6 @@
   - [ ] 패킷 손실률
   - [ ] min/avg/max/mdev
 - [ ] 시그널 핸들링 (SIGINT → 통계 출력 후 종료)
-- [ ] TTL 설정 (setsockopt)
 - [ ] 에러 메시지 개선
 
 ## 🔧 빌드

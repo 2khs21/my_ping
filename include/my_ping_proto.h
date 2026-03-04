@@ -21,4 +21,9 @@ int		opt_tos(int argc, char **argv, int *i, t_ping *p);
 
 int		parse_u32(const char *s, int *out);
 
+int		resolve_host(t_ping *p);
+int		create_socket(t_ping *p);
+int		set_socket_options(t_ping *p);
+void	close_socket(t_ping *p);
+
 #endif

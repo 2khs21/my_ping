@@ -18,6 +18,8 @@ void	debug_opts(t_ping *p)
 {
 	printf("===== DEBUG =====\n");
 	printf("host:        %s\n", p->host ? p->host : "(null)");
+	printf("ip:          %s\n", p->ip_str[0] ? p->ip_str : "(unresolved)");
+	printf("sockfd:      %d\n", p->sockfd);
 	printf("verbose:     %d\n", p->opts.verbose);
 	printf("count:       %d\n", p->opts.count);
 	printf("interval:    %.1f\n", p->opts.interval);
