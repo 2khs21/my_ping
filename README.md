@@ -28,9 +28,9 @@
   - [x] ICMP 헤더 구조체
   - [x] 체크섬 계산
   - [x] 시퀀스 번호 관리
-- [ ] 패킷 송신 (sendto)
-- [ ] 패킷 수신 (recvmsg)
-- [ ] RTT 계산 (gettimeofday)
+- [x] 패킷 송신 (sendto)
+- [x] 패킷 수신 (recvmsg)
+- [x] RTT 계산 (gettimeofday)
 - [ ] 통계 출력
   - [ ] 패킷 손실률
   - [ ] min/avg/max/mdev

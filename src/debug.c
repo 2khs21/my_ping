@@ -14,7 +14,7 @@ static void	print_pattern(unsigned char *pat, int len)
 	printf("\n");
 }
 
-void	debug_opts(t_ping *p)
+static void	debug_opts(t_ping *p)
 {
 	printf("===== DEBUG =====\n");
 	printf("host:        %s\n", p->host ? p->host : "(null)");
@@ -30,7 +30,7 @@ void	debug_opts(t_ping *p)
 	printf("=================\n");
 }
 
-void	debug_icmp_packet(t_icmp_packet *pkt, int total_size)
+static void	debug_icmp_packet(t_icmp_packet *pkt, int total_size)
 {
 	int				i;
 	unsigned char	*raw;
@@ -52,4 +52,15 @@ void	debug_icmp_packet(t_icmp_packet *pkt, int total_size)
 	if (total_size > 32)
 		printf("...");
 	printf("\n=============================\n");
+}
+
+void	debug_test(t_ping *p)
+{
+	t_icmp_packet	pkt;
+	int				pkt_size;
+
+	debug_opts(p);
+	printf("Resolved: %s -> %s\n", p->host, p->ip_str);
+	pkt_size = build_icmp_packet(p, &pkt, 1);
+	debug_icmp_packet(&pkt, pkt_size);
 }

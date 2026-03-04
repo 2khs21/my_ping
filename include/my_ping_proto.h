@@ -4,8 +4,7 @@
 # include "my_ping_types.h"
 # include "my_ping_icmp.h"
 
-void	debug_opts(t_ping *p);
-void	debug_icmp_packet(t_icmp_packet *pkt, int total_size);
+void	debug_test(t_ping *p);
 
 int		parse_args(int argc, char **argv, t_ping *p);
 void	print_usage(void);
@@ -34,5 +33,7 @@ double		calc_rtt(t_icmp_packet *pkt, int payload_size);
 
 int		send_ping(t_ping *p, int seq);
 int		recv_ping(t_ping *p, t_recv_result *res);
+
+int		ping_loop(t_ping *p);
 
 #endif
