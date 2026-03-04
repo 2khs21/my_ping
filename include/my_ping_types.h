@@ -16,6 +16,16 @@ typedef struct s_opts
 	int				tos;
 }	t_opts;
 
+typedef struct s_stats
+{
+	int		sent;
+	int		received;
+	double	min;
+	double	max;
+	double	sum;
+	double	sum_sq;
+}	t_stats;
+
 typedef struct s_ping
 {
 	char				*host;
@@ -23,6 +33,7 @@ typedef struct s_ping
 	int					sockfd;
 	struct sockaddr_in	addr;
 	char				ip_str[INET_ADDRSTRLEN];
+	t_stats				stats;
 }	t_ping;
 
 typedef int	(*t_opt_fn)(int argc, char **argv, int *i, t_ping *p);

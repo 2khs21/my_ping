@@ -27,8 +27,10 @@ static int	ping_once(t_ping *p, int seq)
 
 	if (send_ping(p, seq) != 0)
 		return (1);
+	p->stats.sent++;
 	if (recv_ping(p, &res) != 0)
 		return (1);
+	update_stats(&p->stats, res.rtt);
 	print_reply(p, &res);
 	return (0);
 }
@@ -38,15 +40,17 @@ int	ping_loop(t_ping *p)
 	int	seq;
 	int	count;
 
+	init_stats(&p->stats);
 	print_header(p);
-	seq = 1;
+	seq = 0;
 	count = p->opts.count;
-	while (count == 0 || seq <= count)
+	while (count == 0 || seq < count)
 	{
 		ping_once(p, seq);
 		seq++;
-		if (count == 0 || seq <= count)
+		if (count == 0 || seq < count)
 			sleep((unsigned int)p->opts.interval);
 	}
+	print_stats(p);
 	return (0);
 }

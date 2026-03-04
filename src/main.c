@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 	if (init_ping(&p, argc, argv) != 0)
 		return (1);
 	debug_test(&p);
+	setup_signals(&p);
 	ret = ping_loop(&p);
 	close_socket(&p);
 	return (ret);
