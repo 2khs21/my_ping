@@ -1,0 +1,20 @@
+# Executables
+my_ping
+
+# Object files
+obj/
+*.o
+*.d
+
+# Libraries
+*.a
+
+# Debug
+*.dSYM/
+*.out
+
+# Editor
+.vscode/
+
+# Mac
+.DS_Store
