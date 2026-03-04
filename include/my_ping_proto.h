@@ -32,4 +32,6 @@ uint16_t	checksum(void *data, int len);
 int			build_icmp_packet(t_ping *p, t_icmp_packet *pkt, int seq);
 double		calc_rtt(t_icmp_packet *pkt, int payload_size);
 
+int		send_ping(t_ping *p, int seq);
+
 #endif

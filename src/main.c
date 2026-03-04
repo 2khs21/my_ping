@@ -25,6 +25,13 @@ static int	run(int argc, char **argv)
 	printf("Resolved: %s -> %s\n", p.host, p.ip_str);
 	pkt_size = build_icmp_packet(&p, &pkt, 1);
 	debug_icmp_packet(&pkt, pkt_size);
+	// TEST: send one packet
+	if (send_ping(&p, 1) != 0)
+	{
+		close_socket(&p);
+		return (1);
+	}
+	printf("Packet sent!\n");
 	// TODO: ping loop
 	close_socket(&p);
 	return (0);
