@@ -7,6 +7,7 @@ static int	run(int argc, char **argv)
 	t_ping			p;
 	t_icmp_packet	pkt;
 	int				pkt_size;
+	t_recv_result	res;
 
 	memset(&p, 0, sizeof(p));
 	p.sockfd = -1;
@@ -32,7 +33,14 @@ static int	run(int argc, char **argv)
 		return (1);
 	}
 	printf("Packet sent!\n");
-	// TODO: ping loop
+	// TEST: receive one packet
+	if (recv_ping(&p, &res) != 0)
+	{
+		close_socket(&p);
+		return (1);
+	}
+	printf("Packet received: seq=%d, ttl=%d, rtt=%.2fms\n",
+		res.seq, res.ttl, res.rtt);
 	close_socket(&p);
 	return (0);
 }

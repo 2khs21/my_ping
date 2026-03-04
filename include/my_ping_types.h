@@ -39,4 +39,11 @@ typedef struct s_long_opt_entry
 	t_opt_fn	apply;
 }	t_long_opt_entry;
 
+typedef struct s_recv_result
+{
+	int		seq;
+	int		ttl;
+	double	rtt;
+}	t_recv_result;
+
 #endif
