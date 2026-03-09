@@ -15,7 +15,7 @@ static void	fill_pattern(unsigned char *buf, int len, t_ping *p)
 		if (plen > 0)
 			buf[i] = p->opts.pattern[i % plen];
 		else
-			buf[i] = 0;
+			buf[i] = (unsigned char)(i + 0x10);
 		i++;
 	}
 }
